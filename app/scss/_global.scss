@@ -1,0 +1,115 @@
+body,
+html {
+    background-color: #F9FAFF;
+    font-size: 20px;
+    line-height: 1.5;
+    @extend %rubik-400;
+    height: 100%;
+    color: $text-color;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    flex: 1 1 auto;
+}
+
+.container {
+    max-width: 1200px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.section {
+    padding: 120px 0;
+}
+
+.logo {
+    border-radius: 5px;
+    @extend %rubik-700;
+    transition: box-shadow .5s linear, opacity .5s linear;
+
+    &__color {
+        color: $accent-color;
+    }
+
+    &:focus {
+        box-shadow: 0 0 0 2px $border-color;
+    }
+
+    &:hover {
+        opacity: 0.7;
+    }
+
+    &:active {
+        opacity: 0.5;
+    }
+}
+
+.show__more {
+    text-decoration: underline;
+    color: $menu-color;
+    border-radius: 5px;
+    transition: box-shadow .6s linear, color .5s linear, text-shadow .3s linear, text-decoration .5s linear;
+
+    &:focus {
+        box-shadow: 0 0 0 2px $border-color;
+        text-decoration: #F9FAFF;
+    }
+
+    &:hover {
+        color: $accent-color;
+        text-decoration: #F9FAFF;
+    }
+
+    &:active {
+        text-shadow: 2px 2px 5px $text-shadow;
+        text-decoration: #F9FAFF;
+    }
+}
+
+
+.button {
+    padding: 10px 30px;
+    margin-right: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: $accent-color;
+    color: #fff;
+    border: transparent;
+    transition: background-color .4s linear, box-shadow .5s linear, color .5s linear;
+
+    &:focus {
+        background-color: $button-background;
+        box-shadow: 0 0 0 2px $border-color;
+        color: $accent-color;
+    }
+
+    &:hover {
+        background-color: $button-background;
+        box-shadow: 0 5px 12px rgba(255, 104, 56, 0.2), 0 0 0 2px $border-color;
+        color: $accent-color;
+    }
+
+    &:active {
+        background-color: $button-background;
+        color: $accent-color;
+    }
+}

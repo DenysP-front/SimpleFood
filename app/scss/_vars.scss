@@ -1,0 +1,43 @@
+$white: #fff;
+$gray: #c2c2c2;
+$accent-color: #FF6838;
+$text-color: #31352B;
+$menu-color: #363853;
+$border-card:#ECECEC;
+$title-color: #363853;
+$active-bg: #FFF2ED;
+$button-background: rgba(255, 122, 80, 0.1);
+$border-color: rgba(255, 104, 56, 0.7);
+$text-shadow: rgba(49, 53, 43, 0.5);
+$button-whitebg:rgba(255, 104, 56, 0.2);
+$footer-border: rgb(194, 194, 194, 0.2);
+
+%images-position {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+%rubik-300 {
+    font-family: 'Rubik-Light', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+%rubik-400 {
+    font-family: 'Rubik-Regular', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+%rubik-500 {
+    font-family: 'Rubik-Medium', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+%rubik-700 {
+    font-family: 'Rubik-Bold', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
