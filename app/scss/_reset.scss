@@ -39,6 +39,7 @@ ul {
 img {
     max-width: 100%;
     display: block;
+    
 }
 
 
@@ -55,5 +56,6 @@ textarea,
 select {
     outline: transparent;
     font: inherit;
-    border: inset, transparent ;
+    border: inset;
+    border-color: transparent;
 }
