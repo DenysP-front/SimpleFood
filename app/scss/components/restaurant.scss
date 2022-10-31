@@ -1,117 +1,198 @@
 .restaurant {
-    .restaurant-title {
-        margin-bottom: 45px;
+
+    padding-bottom: 123px;
+
+    @include mxw($md) {
+        padding-bottom: 30px;
     }
 
-    .institutions-box {
+    &__title {
+        margin-bottom: 45px;
+
+        @include mxw($md) {
+            margin-bottom: 28px;
+        }
+    }
+
+    &__list {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__box {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 30px;
+        position: relative;
 
-        &__item {
-            max-width: 370px;
+        @include mxw($md) {
+            display: block;
+        }
+    }
+}
+
+.restaurant__box .slick-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    transform: translateX(8px);
+
+}
+
+.restaurant__box .slick-dots .slick-active button {
+    background-color: #FF6838;
+    transition: box-shadow .5s linear, background-color .5s linear;
+
+    &:active {
+        background-color: #FFAE94;
+    }
+
+    &:focus {
+        background-color: #FF6838;
+    }
+}
+
+.restaurant__box .slick-dots li {
+    padding-bottom: 10px;
+    
+}
+
+.restaurant__box .slick-dots button {
+    font-size: 0;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #c2c2c2;
+    margin-right: 15px;
+    border: transparent;
+    cursor: pointer;
+
+    &:focus {
+        background: #C2C2C2;
+        box-shadow: 0 0 0 2px #FF6838;
+    }
+
+    &:active {
+        background-color: #FFAE94;
+    }
+
+    &:hover {
+        background-color: #FFF2ED;
+        box-shadow: 0 0 0 2px rgba(255, 122, 80, 0.7);
+    }
+}
+
+.restaurant-card {
+
+    max-width: 370px;
+    background-color: $white;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: box-shadow .5s linear;
+
+    @include mxw($md) {
+        margin-bottom: 17px;
+    }
+
+    &:hover {
+        box-shadow: 0px 3px 15px rgba(255, 104, 56, 0.5);
+    }
+
+
+    &__img {
+        margin-bottom: 15px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    &__text {
+        padding-left: 20px;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 1.3;
+        margin-bottom: 20px;
+        @include line-clamp(1);
+    }
+
+    &__info {
+        padding: 0 20px 20px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__data {
+        position: relative;
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 30px;
+        opacity: 0.9;
+        padding-left: 30px;
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            top: 3px;
+            left: 0;
+            background-image: url('../images/sprite.svg#icon-time');
+        }
+    }
+
+    &__btn {
+        position: relative;
+        width: 80px;
+        height: 30px;
+        background-color: $accent-color;
+        border-radius: 20px;
+
+        transition: box-shadow .5s linear, background-color .5s linear;
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 12px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            @extend %images-position;
+            background-image: url('../images/sprite.svg#icon-arrow-right');
+            filter: invert(100%) sepia(100%) saturate(13%) hue-rotate(237deg) brightness(104%) contrast(104%);
+            transition: transform .3s linear;
+
+        }
+
+        &:focus {
+            background-color: #FFF2ED;
+            box-shadow: 0 0 0 2px $border-color;
+        }
+
+        &:focus::before {
+            filter: invert(50%) sepia(55%) saturate(2064%) hue-rotate(336deg) brightness(100%) contrast(103%);
+        }
+
+        &:hover {
             background-color: $white;
-            box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            transition: box-shadow .5s linear;
-
-            &:hover {
-                box-shadow: 0px 3px 15px rgba(255, 104, 56, 0.5);
-            }
+            box-shadow: 0 0 0 2px $border-color;
         }
 
-        &__img {
-            margin-bottom: 15px;
-            object-fit: cover;
-            border-radius: 10px;
+        &:hover::before {
+            filter: invert(50%) sepia(55%) saturate(2064%) hue-rotate(336deg) brightness(100%) contrast(103%);
+            transform: translate(100%, -50%);
         }
 
-        &__text {
-            padding-left: 20px;
-            font-weight: 400;
-            font-size: 24px;
-            line-height: 1.3;
-            margin-bottom: 20px;
-            @include line-clamp(1);
+        &:active {
+            background-color: #FFF2ED;
         }
 
-        &__info {
-            padding: 0 20px 20px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        &__data {
-            position: relative;
-            font-weight: 300;
-            font-size: 18px;
-            line-height: 30px;
-            opacity: 0.9;
-            padding-left: 30px;
-
-            &::before {
-                content: '';
-                position: absolute;
-                width: 22px;
-                height: 22px;
-                @extend %images-position;
-                top: 3px;
-                left: 0;
-                background-image: url('../images/sprite.svg#icon-time');
-            }
-        }
-
-        &__btn {
-            position: relative;
-            width: 80px;
-            height: 30px;
-            background-color: $accent-color;
-            border-radius: 20px;
-
-            transition: box-shadow .5s linear, background-color .5s linear;
-
-            &::before {
-                content: '';
-                position: absolute;
-                width: 14px;
-                height: 12px;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                @extend %images-position;
-                background-image: url('../images/sprite.svg#icon-arrow-right');
-                filter: invert(100%) sepia(100%) saturate(13%) hue-rotate(237deg) brightness(104%) contrast(104%);
-                transition: transform .3s linear;
-
-            }
-
-            &:focus {
-                background-color: #FFF2ED;
-                box-shadow: 0 0 0 2px $border-color;
-            }
-
-            &:focus::before {
-                filter: invert(50%) sepia(55%) saturate(2064%) hue-rotate(336deg) brightness(100%) contrast(103%);
-            }
-
-            &:hover {
-                background-color: $white;
-                box-shadow: 0 0 0 2px $border-color;
-            }
-
-            &:hover::before {
-                filter: invert(50%) sepia(55%) saturate(2064%) hue-rotate(336deg) brightness(100%) contrast(103%);
-                transform: translate(100%, -50%);
-            }
-
-            &:active {
-                background-color: #FFF2ED;
-            }
-
-            &:active::before {
-                filter: invert(50%) sepia(55%) saturate(2064%) hue-rotate(336deg) brightness(100%) contrast(103%);
-            }
+        &:active::before {
+            filter: invert(50%) sepia(55%) saturate(2064%) hue-rotate(336deg) brightness(100%) contrast(103%);
         }
     }
 }

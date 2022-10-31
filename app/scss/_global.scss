@@ -10,6 +10,22 @@ html {
     color: $text-color;
 }
 
+.lock {
+    overflow: hidden;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 15px;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+
 .sr-only {
     position: absolute;
     width: 1px;
@@ -38,28 +54,23 @@ html {
     padding: 0 15px;
     margin: 0 auto;
 
-    &--about {
-        display: flex;
-        widows: 100%;
-        justify-content: space-around;
-        align-items: center;
+    @include mxw($sm) {
+        padding: 0 15px;
     }
-
-    &--app {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        
-    } 
 }
 
 .section {
     padding-bottom: 120px;
+
+    @include mxw($xs) {
+        padding-bottom: 34px;
+    }
 }
 
 .logo {
     border-radius: 5px;
     transition: box-shadow .5s linear, opacity .5s linear;
+
 
     &__color {
         color: $accent-color;
@@ -76,44 +87,61 @@ html {
     &:active {
         opacity: 0.5;
     }
+
+
+    .logo--active {
+
+        width: 115px;
+        height: 25px;
+
+    }
+
+
 }
-
-.logo img {
-    object-fit: contain;
-}
-
-
-
 
 .show__more {
     text-decoration: underline;
+    text-decoration-color: #363853;
     color: $menu-color;
     border-radius: 5px;
     background-color: transparent;
     border: transparent;
     cursor: pointer;
-    transition: box-shadow .6s linear, color .5s linear, text-shadow .3s linear, text-decoration .5s linear;
+    transition: box-shadow .6s linear, color .5s linear, text-shadow .3s linear, text-decoration-color .5s linear;
+
+
+    @include mxw($xs) {
+        font-size: 16px;
+        line-height: 1.5;
+    }
 
     &--center {
         position: relative;
         left: 50%;
         transform: translateX(-50%);
+
+        @include mxw($xs) {
+            font-size: 20px;
+            line-height: 1.5;
+        }
     }
 
     &:focus {
         box-shadow: 0 0 0 2px $border-color;
-        text-decoration: #F9FAFF;
+        text-decoration-color: transparent;
     }
 
     &:hover {
         color: $accent-color;
-        text-decoration: #F9FAFF;
+        text-decoration-color: transparent;
     }
 
     &:active {
         text-shadow: 2px 2px 5px $text-shadow;
-        text-decoration: #F9FAFF;
+        text-decoration-color: transparent;
     }
+
+   
 }
 
 
@@ -143,102 +171,31 @@ html {
         background-color: $button-background;
         color: $accent-color;
     }
+
+    @include mxw($xs) {
+        padding: 8px 25px;
+        font-size: 14px;
+        line-height: 1.3;
+    }
 }
 
 .title {
-    @extend %rubik-500;
+    font-weight: 500;
+    ;
     font-size: 36px;
     line-height: 1.3;
     margin-bottom: 60px;
     display: flex;
     justify-content: center;
     color: #363853;
-}
 
-.product-card {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 30px;
-    margin-bottom: 60px;
-
-    &__item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        max-width: 210px;
-        width: 100%;
-        min-height: 300px;
-        padding: 20px 15px;
-        background-color: $white;
-        border-radius: 5px;
-        box-shadow: 0 0 0 1px $border-card;
-        transition: box-shadow .5s linear;
-
-        &:hover {
-            box-shadow: 0 0 0 1px $accent-color;
-        }
-    }
-
-    &__transition {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    &__images {
-        margin-bottom: 10px;
-        width: 140px;
-        height: 140px;
-        object-fit: cover;
-    }
-
-    &__text {
-        @include line-clamp(2);
-        word-break: break-all;
-        margin-bottom: 2px;
-        text-align: center;
-        font-size: 15px;
-        line-height: 1.2;
-        min-height: 36px;
-        color: $text-color;
-        @extend %rubik-400;
-    }
-
-    &__price {
-        @extend %rubik-500;
-        font-size: 15px;
-        line-height: 1.4;
-        color: $title-color;
-    }
-
-    &__button {
-        padding: 5px 13px;
-        color: #fff;
-        font-size: 14px;
+    @include mxw($sm) {
+        font-size: 24px;
         line-height: 1.3;
-        background-color: $accent-color;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color .8s linear, opacity .8s linear, box-shadow .8s linear;
-
-
-        &:focus {
-            background-color: $button-background;
-            box-shadow: 0 0 0 2px $border-color;
-            color: $accent-color;
-        }
-
-        &:hover {
-            background-color: $button-background;
-            box-shadow: 0 5px 12px $button-whitebg, 0 0 0 2px $border-color;
-            color: $accent-color;
-        }
-
-        &:active {
-            background-color: $button-background;
-            color: $accent-color;
-            opacity: 0.6;
-        }
+        
+        margin-bottom: 19px;
     }
 }
+
+
+

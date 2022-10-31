@@ -1,86 +1,287 @@
+
 .product {
 
-    .product-menu {
+    padding-bottom: 110px;
+
+    @include mxw($xs) {
+        padding-bottom: 16px;
+    }
+
+    &__title {
+        @include mxw($xs) {
+            transform: translateX(-8px);
+        }
+    }
+    
+    &__menu {
         display: flex;
         justify-content: flex-start;
         color: $title-color;
         margin-bottom: 45px;
 
-        &__item {
-            margin-right: 20px;
-
-
-            &:last-child {
-                margin-right: 0;
-            }
-        }
-
-        &__button {
-            position: relative;
-            color: $title-color;
-            line-height: 1.3;
-            border: transparent;
-            background-color: $white;
-            padding: 22px 32px 22px 86px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color .5s linear, box-shadow .5s linear, color .6s linear, filter .8s linear;
-
-            &--active {
-                background-color: $accent-color;
-                color: $white;
-            }
-
-            &--active::after {
-                filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(108deg) brightness(104%) contrast(104%);
-            }
-
-            &::after {
-                content: '';
-                position: absolute;
-                @extend %images-position;
-                width: 44px;
-                height: 44px;
-                bottom: 12px;
-                left: 32px;
-                transition: background-color .5s linear, box-shadow .5s linear;
-            }
-
-            &--burger::after {
-                background-image: url('../images/sprite.svg#icon-category-burger');
-            }
-
-            &--pizza::after {
-                background-image: url('../images/sprite.svg#icon-category-pizza');
-            }
-
-            &--sandvich::after {
-                background-image: url('../images/sprite.svg#icon-category-sandvich');
-            }
-
-            &--asian::after {
-                background-image: url('../images/sprite.svg#icon-category-asia');
-            }
-
-            &--sets::after {
-                background-image: url('../images/sprite.svg#icon-category-dish');
-            }
-
-            &:focus {
-                box-shadow: 0 0 0 2px $border-color;
-            }
-
-            &:hover {
-                background: $button-background;
-                box-shadow: 0 0 0 2px $border-color;
-                color: $accent-color;
-            }
-
-            &:hover::after {
-                filter: invert(48%) sepia(93%) saturate(2041%) hue-rotate(338deg) brightness(104%) contrast(101%);
-            }
-
+        @include mxw($lg) {
+            overflow-y: scroll;
+            overflow-y: hidden;
+            padding: 10px 0;
+            width: 100%;
+            margin-bottom: 20px;
         }
     }
 
+    &__item {
+        margin-right: 20px;
+
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        @include mxw($xs) {
+            margin-right: 10px;
+        }
+    }
+
+    &__button {
+        position: relative;
+        color: $title-color;
+        line-height: 1.3;
+        border: transparent;
+        background-color: $white;
+        padding: 22px 32px 22px 86px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color .5s linear, box-shadow .5s linear, color .6s linear, filter .8s linear;
+
+        @include mxw($sm) {
+            padding: 12px 16px 12px 41px;
+            font-size: 14px;
+            line-height: 1.3;
+
+        }
+
+        &--active {
+            background-color: $accent-color;
+            color: $white;
+
+            &::after {
+                filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(108deg) brightness(104%) contrast(104%);
+            }
+        }
+
+        &--asian {
+            width: 280px;
+
+            @include mxw($sm) {
+                width: 170px;
+            }
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 44px;
+            height: 44px;
+            bottom: 12px;
+            left: 32px;
+            transition: background-color .5s linear, box-shadow .5s linear, filter 1s;
+            filter: invert(20%) sepia(9%) saturate(2295%) hue-rotate(198deg) brightness(93%) contrast(88%);
+
+            @include mxw($sm) {
+
+                width: 20px;
+                height: 20px;
+                left: 16px;
+
+            }
+        }
+
+        &--burger::after {
+            background-image: url('../images/sprite.svg#icon-category-burger');
+
+            filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(108deg) brightness(104%) contrast(104%);
+        }
+
+        &--pizza::after {
+            background-image: url('../images/sprite.svg#icon-category-pizza');
+
+        }
+
+        &--sandvich::after {
+            background-image: url('../images/sprite.svg#icon-category-sandvich');
+        }
+
+        &--asian::after {
+            background-image: url('../images/sprite.svg#icon-category-asia');
+        }
+
+        &--sets::after {
+            background-image: url('../images/sprite.svg#icon-category-dish');
+        }
+
+        &:focus {
+            box-shadow: 0 0 0 2px $border-color;
+        }
+
+        &:hover {
+            background: $button-background;
+            box-shadow: 0 0 0 2px $border-color;
+            color: $accent-color;
+        }
+
+        &:hover::after {
+            filter: invert(48%) sepia(93%) saturate(2041%) hue-rotate(338deg) brightness(104%) contrast(101%);
+        }
+
+    }
+}
+
+.product-card {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+    margin-bottom: 60px;
+
+    @include mxw($md) {
+        display: grid;
+        justify-content: center;
+        grid-template-columns: repeat(3, 210px);
+        gap: 20px;
+        margin-bottom: 60px;
+    }
+
+    @include mxw($sm) {
+        display: grid;
+        grid-template-columns: repeat(2, 210px);
+        gap: 20px;
+    }
+
+    @include mxw ($xs) {
+        grid-template-columns: repeat(2, 170px);
+        gap: 8px;
+        margin-bottom: 33px;
+        justify-content: center;
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 210px;
+        width: 100%;
+        min-height: 300px;
+        padding: 20px 15px;
+        background-color: $white;
+        border-radius: 5px;
+        box-shadow: 0 0 0 1px $border-card;
+        transition: box-shadow .5s linear;
+
+        &:hover {
+            box-shadow: 0 0 0 1px $accent-color;
+        }
+    }
+
+    &__transition {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__images {
+        margin-bottom: 10px;
+        width: 140px;
+        height: 140px;
+        object-fit: cover;
+    }
+
+    &__text {
+        @include line-clamp(2);
+        word-break: break-all;
+        margin-bottom: 2px;
+        text-align: center;
+        font-size: 15px;
+        line-height: 1.2;
+        min-height: 36px;
+        color: $text-color;
+        font-weight: 400;
+
+        @include mxw($lg) {
+            word-break: normal;
+        }
+
+    }
+
+    &__price {
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 1.4;
+        color: $title-color;
+    }
+
+    &__button {
+        padding: 5px 13px;
+        color: #fff;
+        font-size: 14px;
+        line-height: 1.3;
+        background-color: $accent-color;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color .8s linear, opacity .8s linear, box-shadow .8s linear;
+
+
+        &:focus {
+            background-color: $button-background;
+            box-shadow: 0 0 0 2px $border-color;
+            color: $accent-color;
+        }
+
+        &:hover {
+            background-color: $button-background;
+            box-shadow: 0 5px 12px $button-whitebg, 0 0 0 2px $border-color;
+            color: $accent-color;
+        }
+
+        &:active {
+            background-color: $button-background;
+            color: $accent-color;
+            opacity: 0.6;
+        }
+    }
+}
+
+
+
+
+@media (max-width: 992px) {}
+
+@media (max-width: 768px) {
+
+    // .product-menu {
+
+    //     &__button {
+    //         padding: 12px 16px 12px 41px;
+    //         font-size: 14px;
+    //         line-height: 1.3;
+
+    //         &::after {
+    //             width: 20px;
+    //             height: 20px;
+    //             left: 16px;
+    //         }
+
+    //     }
+    // }
+}
+
+@media (max-width: 576px) {
+
+    // .product-menu {
+
+    //     &__item {
+    //         margin-bottom: 30px;
+    //     }
+    // }
 }

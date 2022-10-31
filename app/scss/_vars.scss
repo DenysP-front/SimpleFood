@@ -12,6 +12,8 @@ $text-shadow: rgba(49, 53, 43, 0.5);
 $button-whitebg:rgba(255, 104, 56, 0.2);
 $footer-border: rgb(194, 194, 194, 0.2);
 
+
+
 %images-position {
     background-position: center;
     background-size: cover;
@@ -54,4 +56,16 @@ $footer-border: rgb(194, 194, 194, 0.2);
         -webkit-line-clamp: $lines;
         -webkit-box-orient: vertical;
     }
+}
+
+
+$xs: 560;
+$sm: 768;
+$md: 992;
+$lg: 1200;
+
+@mixin mxw($width) {
+    @media (max-width: #{$width}px) {
+        @content;
+    }    
 }

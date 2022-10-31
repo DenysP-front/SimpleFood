@@ -6,6 +6,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const uglify       = require('gulp-uglify');
 const imagemin     = require('gulp-imagemin');
 const svgSprite    = require('gulp-svg-sprite');
+const fileInclude  = require('gulp-file-include');
 const del          = require('del');
 const browserSync  = require('browser-sync').create();
 
@@ -31,6 +32,16 @@ function browsersync() {
         notify: false
     })
 }
+
+const htmlInclude = () => {
+    return src(['app/html/*.html'])
+    .pipe(fileInclude({
+      prefix: '@',
+      basepath: '@file',
+    }))
+    .pipe(dest('app'))
+    .pipe(browserSync.stream());
+  }
 
 function styles() {
     return src('app/scss/style.scss')
@@ -82,16 +93,18 @@ function watching() {
     watch(['app/js/**/*.js', '!app/js/main.min.js'], scripts);
     watch(['app/**/*.html']).on('change', browserSync.reload);
     watch(['app/images/icons/*.svg'], svgSprites);
+    watch(['app/html/**/*.html'], htmlInclude);
 }
 
 
 exports.styles  = styles;
 exports.scripts = scripts;
 exports.browsersync = browsersync;
+exports.htmlInclude = htmlInclude;
 exports.watching = watching;
 exports.images = images;
 exports.svgSprites = svgSprites;
 exports.cleanDist = cleanDist;
 exports.build = series(cleanDist, images, build);
 
-exports.default = parallel(styles, scripts, browsersync, watching, svgSprites);
+exports.default = parallel(htmlInclude, styles, scripts, browsersync, watching, svgSprites);
