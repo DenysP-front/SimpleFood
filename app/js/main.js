@@ -26,13 +26,13 @@ $(function () {
 $(function () {
   $('.restaurant__box').slick({
     responsive: [{
-      breakpoint: 1905,
+      breakpoint: 3000,
       settings: 'unslick'
     },
 
     {
       breakpoint: 1100,
-      settings: { 
+      settings: {
         arrows: false,
         dots: true,
         slidesToShow: 2,
@@ -42,7 +42,7 @@ $(function () {
 
     {
       breakpoint: 820,
-      settings: { 
+      settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
         dots: true,
@@ -55,6 +55,46 @@ $(function () {
 });
 
 $(function () {
+  $('.discount__list').slick({
+    responsive: [{
+      breakpoint: 3000,
+      settings: 'unslick'
+    },
+
+    {
+      breakpoint: 1200,
+      settings: {
+        arrows: false,
+        dots: true,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      }
+    },
+
+    {
+      breakpoint: 850,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        dots: true,
+        arrows: false,
+      }
+    }
+    ]
+
+  });
+});
+
+$(function () {
+
+  $(window).scroll(function () {
+    if ($(window).scrollTop() >= 100) {
+      $('.breadcrumbs').addClass('breadcrumbs__padding')
+    }
+    else {
+      $('.breadcrumbs').removeClass('breadcrumbs__padding')
+    }
+  });
 
   $(window).scroll(function () {
     if ($(window).scrollTop() >= 100) {
@@ -114,11 +154,9 @@ document.addEventListener('DOMContentLoaded', () => {
   burger.addEventListener('click', () => {
     mobileMenu.classList.toggle('menu--active');
     if (mobileMenu.classList.contains('menu--active')) {
-
       bodyLock.classList.add('lock');
     }
     else {
-
       bodyLock.classList.remove('lock');
     }
   });
@@ -129,3 +167,93 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+
+  const filter = document.querySelector('.catalog__button');
+  const catalogMenu = document.querySelector('.catalog__menu');
+  const bodyLock = document.querySelector('body');
+  const catalogClose = document.querySelector('.catalog__button--closed');
+  
+
+  filter.addEventListener('click', () => {
+    catalogMenu.classList.toggle('catalog__menu--active');
+    if (catalogMenu.classList.contains('catalog__menu--active')) {
+      bodyLock.classList.add('lock');
+    }
+    else {
+      bodyLock.classList.remove('lock');
+    }
+  });
+
+  catalogClose.addEventListener('click', () => {
+    catalogMenu.classList.remove('catalog__menu--active');
+    bodyLock.classList.remove('lock');
+  });
+});
+
+
+$(function () {
+  var $range = $(".catalog-slider__range"),
+  $inputFrom = $(".catalog-slider__field--from"),
+  $inputTo = $(".catalog-slider__field--to"),
+  instance,
+  min = 0,
+  max = 1200,
+  from = 0,
+  to = 0;
+
+$range.ionRangeSlider({
+  skin: "round",
+  type: "double",
+  min: min,
+  max: max,
+  from: 100,
+  to: 1000,
+  hide_min_max: true,
+  hide_from_to: true,
+  onStart: updateInputs,
+  onChange: updateInputs,
+  prefix: "$"
+});
+instance = $range.data("ionRangeSlider");
+
+function updateInputs(data) {
+  from = data.from;
+  to   = data.to;
+  $inputFrom.prop("value", '' + from);
+  $inputTo.prop("value", '' + to);
+}
+
+$inputFrom.on("input", function () {
+  var val = $(this).prop("value");
+
+  // validate
+  if (val < min) {
+    val = min;
+  } else if (val > to) {
+    val = to;
+  }
+
+  instance.update({
+    from: val
+  });
+});
+
+$inputTo.on("input", function () {
+  var val = $(this).prop("value");
+
+  // validate
+  if (val < from) {
+    val = from;
+  } else if (val > max) {
+    val = max;
+  }
+
+  instance.update({
+    to: val
+  });
+});
+
+});
+
+$('.catalog__select').styler();

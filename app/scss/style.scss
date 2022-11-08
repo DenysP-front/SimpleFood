@@ -1,6 +1,7 @@
 @import 'reset';
 @import 'fonts';
 @import 'vars';
+@import 'mixin';
 @import 'lips'; 
 @import 'global';
 
@@ -16,6 +17,6 @@
 
 
 
-
+@import "./catalog-page/catalog.scss";
 
 

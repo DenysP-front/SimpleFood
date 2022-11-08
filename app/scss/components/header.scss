@@ -1,9 +1,13 @@
 .header {
 
+    
+
     &__logo {
         @include mxw($xs) {
             width: 115px;
             height: 25px;
+            position: relative;
+            left: 10px;
         }
     }
 
@@ -29,7 +33,7 @@
         position: sticky;
         margin: 0 auto;
         max-width: 1170px;
-        z-index: 80;
+        z-index: 90;
     }
 
     &__top {
@@ -43,7 +47,7 @@
         }
 
         @include mxw($sm) {
-            padding: 22px 0px;
+            padding: 22px 5px;
         }
 
     }
@@ -140,6 +144,7 @@
         &::after {
             content: '';
             position: absolute;
+            z-index: 0;
             width: 20px;
             height: 20px;
             top: 12px;
@@ -206,6 +211,7 @@
 
     &__number {
         position: absolute;
+        z-index: 4;
         height: 12px;
         min-width: 12px;
         padding: 3px;
@@ -217,7 +223,6 @@
         border-radius: 7px;
         color: $white;
         background-color: $accent-color;
-        z-index: 10;
     }
 }
 
@@ -281,25 +286,25 @@
 .mobile {
     background-color: #ffffff;
     position: absolute;
-    transform: translateX(-100%);
+    transform: translateX(-400%);
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     max-width: 300px;
-    z-index: 100;
     transition: transform .6s linear;
+    z-index: 100;
 
     &__header {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        background-color: #fff;
     }
 
     &__button {
         width: 30px;
         height: 30px;
-        margin-right: 30px;
         position: relative;
         background-color: transparent;
         cursor: pointer;
@@ -314,11 +319,12 @@
         }
 
         &::after {
+            top: 14px;
             transform: rotate(45deg);
         }
 
         &::before {
-            top: 12px;
+            top: 14px;
             transform: rotate(-45deg);
         }
     }
@@ -333,11 +339,8 @@
         flex-direction: column;
         justify-content: flex-start;
         padding: 25px 0 25px 15px;
-    }
-
-    &__list {
         border: 1px solid #EEEFF3;
-        padding-left: 15px;
+        background-color: #fff;
     }
 
     &__item {
@@ -348,12 +351,181 @@
         }
     }
 
+    &__link {
+        background-color: #fff;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 21px;
+        color: $text-color;
+        transition: box-shadow .6s linear, color .5s linear, text-shadow .3s linear;
+        border-radius: 5px;
+
+
+        &--active {
+            color: $accent-color;
+        }
+
+        &:focus {
+            box-shadow: 0 0 0 2px $border-color;
+        }
+
+        &:hover {
+            color: $accent-color;
+        }
+
+        &:active {
+            text-shadow: 2px 2px 5px $text-shadow;
+        }
+
+    }
+
     &__contacts {
         padding-left: 15px;
+    }
+}
+
+.mobile-contacts {
+    padding-left: 15px;
+    background-color: #fff;
+    width: 300px;
+    height: 100vh;
+
+    @include mxw($md) {
+        order: 2;
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
+
+    &__list {
+        margin-bottom: 15px;
+
+        &:last-child {
+            margin-bottom: 15px;
+        }
+    }
+
+    &__links {
+        position: relative;
+        padding-left: 30px;
+        font-size: 16px;
+        line-height: 2;
+        font-weight: 400;
+        font-style: normal;
+        color: $text-color;
+        border-radius: 5px;
+        white-space: nowrap;
+        background-repeat: no-repeat;
+        transition: color .5s linear, box-shadow .5s linear;
+
+        &:focus {
+            box-shadow: 0 0 0 2px $border-color;
+        }
+
+        &:hover {
+            color: $accent-color;
+
+        }
+
+        &:active {
+            text-shadow: 2px 2px 5px $text-shadow;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 19px;
+            height: 18px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            left: 0;
+            top: 2px;
+        }
+
+
+        &--message {
+            &::after {
+                background-image: url('../images/sprite.svg#icon-message');
+            }
+        }
+
+        &--call {
+            &::after {
+                background-image: url('../images/sprite.svg#icon-call')
+            }
+        }
+
+        &--location {
+            &::after {
+                background-image: url('../images/sprite.svg#icon-location')
+            }
+        }
+    }
+
+    &__messengers {
+        display: flex;
+        
+    }
+
+    &__item {
+        margin-right: 12px;
+        position: relative;
+        display: inline-block;
+        background-color: $border-card;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color .5s linear, box-shadow .5s linear;
+
+
+        &:focus {
+            background: $active-bg;
+            box-shadow: 0 0 0 2px $border-color;
+        }
+
+        &:hover {
+            background-color: $accent-color;
+        }
+
+        &:active {
+            background: $active-bg;
+            box-shadow: 0 0 0 2px $border-color;
+        }
+
+
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &:hover  {
+            .mobile-contacts__social {
+                filter: invert(100%) sepia(1%) saturate(3602%) hue-rotate(257deg) brightness(100%) contrast(96%);
+            }
+        }
+
+        &:active {
+            .mobile-contacts__social {
+                filter: invert(34%) sepia(17%) saturate(6951%) hue-rotate(326deg) brightness(102%) contrast(105%);
+            }
+        }
+
+    }
+
+    &__social {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: 10px;
+        left: 10px;
+        object-fit: cover;
+        @extend %images-position;
+        transition: filter .8s linear;
+
     }
 }
 
 .menu--active {
     transform: translateX(0);
 }
-
