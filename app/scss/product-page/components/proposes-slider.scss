@@ -1,0 +1,197 @@
+.proposes-slider {
+    padding-bottom: 92px;
+
+    @include mxw($xs) {
+        
+        padding-bottom: 70px;
+    }
+
+    &__box {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+    }
+
+    &__title {
+        margin-bottom: 54px;
+
+        @include mxw($xs) {
+            font-size: 20px;
+            line-height: 1.3;
+            margin-bottom: 25px;
+        }
+    }
+
+    &__list {
+        margin: 0 auto;
+    }
+
+    &__link {
+        width: 100%;
+
+    }
+
+    .slick-slide {
+        margin: 0 12px;
+
+        @include mxw($xs) {
+            margin: 0 8px;
+        }
+    }
+
+    .slick-list {
+        margin: 0 -12px;
+        padding: 5px 0 5px 2px;
+
+    }
+
+    .slick-arrow {
+        position: absolute;
+        top: 3px;
+        right: 2px;
+        font-size: 0;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.01);
+        border: 3px solid #c2c2c2;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 50px 50px;
+        z-index: 20;
+        cursor: pointer;
+        transition: box-shadow .5s linear, background-color .5s linear, border .5s linear;
+
+
+        &:focus {
+            box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
+        }
+
+        &:hover {
+            border: 3px solid #FFAE94;
+            background-color: #FFF2ED;
+        }
+
+        &:active {
+            border-color: #F9FAFF;
+            background-color: #FFF2ED;
+        }
+
+        &:hover::after {
+            filter: invert(72%) sepia(18%) saturate(814%) hue-rotate(326deg) brightness(100%) contrast(103%);
+        }
+
+        &:active::after {
+            filter: invert(59%) sepia(46%) saturate(2480%) hue-rotate(328deg) brightness(105%) contrast(101%);
+        }
+
+    }
+
+
+
+    .slick-prev {
+
+        right: 61px;
+
+        &::after {
+            content: '';
+            position: absolute;
+            background-image: url('../images/sprite.svg#icon-left');
+            width: 10px;
+            top: 8px;
+            right: 14px;
+            height: 18px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 50px 50px;
+            filter: invert(82%) sepia(4%) saturate(0%) hue-rotate(19deg) brightness(97%) contrast(83%);
+        }
+
+        @include mxw($xs) {}
+
+    }
+
+    .slick-next {
+
+
+        &::after {
+            content: '';
+            position: absolute;
+            background-image: url('../images/sprite.svg#icon-left');
+            transform: matrix(-1, 0, 0, 1, 0, 0);
+            width: 13px;
+            top: 8px;
+            right: 9px;
+            height: 18px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 50px 50px;
+            filter: invert(82%) sepia(4%) saturate(0%) hue-rotate(19deg) brightness(97%) contrast(83%);
+        }
+
+        @include mxw($xs) {}
+    }
+
+    .slick-arrow.slick-disabled {
+        opacity: .5;
+    }
+
+    .slick-dots {
+        display: flex;
+        position: absolute;
+        bottom: -49px;
+        z-index: 200;
+        left: 52.5%;
+        transform: translateX(-50%);
+        list-style: none;
+        opacity: 1;
+
+        
+    }
+
+    .slick-dots .slick-active button {
+        background-color: #FF6838;
+        transition: box-shadow .5s linear, background-color .5s linear;
+
+        &:active {
+            background-color: #FFAE94;
+        }
+
+        &:focus {
+            background-color: #FF6838;
+        }
+    }
+
+    .slick-dots li {
+        padding-bottom: 10px;
+        transform: translateY(2px);
+    }
+
+    .slick-dots button {
+        font-size: 0;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: #c2c2c2;
+        margin-right: 15px;
+        border: transparent;
+        cursor: pointer;
+
+        &:focus {
+            background: #C2C2C2;
+            box-shadow: 0 0 0 2px #FF6838;
+        }
+
+        &:active {
+            background-color: #FFAE94;
+        }
+
+        &:hover {
+            background-color: #FFF2ED;
+            box-shadow: 0 0 0 2px rgba(255, 122, 80, 0.7);
+        }
+
+
+    }
+
+}

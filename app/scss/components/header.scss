@@ -8,6 +8,7 @@
             height: 25px;
             position: relative;
             left: 10px;
+            top: -7px;
         }
     }
 
@@ -50,10 +51,18 @@
             padding: 22px 5px;
         }
 
+        @include mxw($xs) {
+            padding: 24.5px 5px;
+        }
+
     }
 
     &__menu {
         display: flex;
+
+        @include mxw($xs) {
+            transform: translateX(-9px);
+        }
     }
 
     .menu__padding {

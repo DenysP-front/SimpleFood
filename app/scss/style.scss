@@ -14,9 +14,20 @@
 @import "./components/app.scss";
 @import "./components/footer.scss";
 
+@import "./catalog-page/components/breadcrumbs.scss";
+@import "./catalog-page/components/catalog.scss";
+@import "./catalog-page/components/app.scss";
+@import "./catalog-page/components/discount.scss";
+
+
+@import "./product-page/components/breadcrumbs-page-product.scss";
+@import "./product-page/components/about-product.scss";
+@import "./product-page/components/description.scss";
+@import "./product-page/components/proposes-slider.scss";
 
 
 
-@import "./catalog-page/catalog.scss";
+
+
 
 

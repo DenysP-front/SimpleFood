@@ -178,6 +178,7 @@
         border-radius: 5px;
         box-shadow: 0 0 0 1px $border-card;
         transition: box-shadow .5s linear;
+        margin-right: 0;
 
         &:hover {
             box-shadow: 0 0 0 1px $accent-color;
